@@ -306,6 +306,72 @@
             </Coordinate>
           </IndexedFaceSet>
         </Shape>
+        <Transform DEF='Sensor4'  translation='0.3 0.03 0' rotation='0 1 0 1.5'>
+          <Shape DEF='Sensor4_hardware' >
+            <Box size='0.0195 0.0195 0.003'>
+            </Box>
+          </Shape>
+          <Transform DEF='Ray_sensor4'  translation='-0.03 0 1.01' rotation='-0.07 1 -1 3'>
+            <Shape DEF='Ray_shape4' >
+              <Appearance>
+                <Material transparency='0.8' diffuseColor='1 1 0'>
+                </Material>
+              </Appearance>
+              <Cone DEF='Cone4'  bottomRadius='0.48015'>
+              </Cone>
+            </Shape>
+            <PrimitivePickSensor DEF='PickSensor4'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+              <Cone USE='Cone4'  containerField='pickingGeometry'>
+              </Cone>
+              <Group USE='Obstacles'  containerField='pickTarget'>
+              </Group>
+            </PrimitivePickSensor>
+          </Transform>
+        </Transform>
+        <Transform DEF='Sensor5'  translation='-0.15 0.03 0.2598'>
+          <Shape DEF='Sensor5_hardware' >
+            <Box size='0.0195 0.0195 0.003'>
+            </Box>
+          </Shape>
+          <Transform DEF='Ray_sensor5'  translation='-0.52 0.034 0.88' rotation='0.9 -0.4 1 -1.7'>
+            <Shape DEF='Ray_shape5' >
+              <Appearance>
+                <Material transparency='0.8' diffuseColor='1 1 0'>
+                </Material>
+              </Appearance>
+              <Cone DEF='Cone5'  bottomRadius='0.48015'>
+              </Cone>
+            </Shape>
+            <PrimitivePickSensor DEF='PickSensor5'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+              <Cone USE='Cone5'  containerField='pickingGeometry'>
+              </Cone>
+              <Group USE='Obstacles'  containerField='pickTarget'>
+              </Group>
+            </PrimitivePickSensor>
+          </Transform>
+        </Transform>
+        <Transform DEF='Sensor6'  translation='-0.16 0.03 -0.2771' rotation='0 1 0 0.5'>
+          <Shape DEF='Sensor6_hardware' >
+            <Box size='0.0195 0.0195 0.003'>
+            </Box>
+          </Shape>
+          <Transform DEF='Ray_sensor6'  translation='-0.07 0.07 -0.99' rotation='2 0.8 0.7 1.8'>
+            <Shape DEF='Ray_shape6' >
+              <Appearance>
+                <Material transparency='0.8' diffuseColor='1 1 0'>
+                </Material>
+              </Appearance>
+              <Cone DEF='Cone6'  bottomRadius='0.48015'>
+              </Cone>
+            </Shape>
+            <PrimitivePickSensor DEF='PickSensor6'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+              <Cone USE='Cone6'  containerField='pickingGeometry'>
+              </Cone>
+              <Group USE='Obstacles'  containerField='pickTarget'>
+              </Group>
+            </PrimitivePickSensor>
+          </Transform>
+        </Transform>
       </Transform>
       <Transform DEF='Pillar003'  translation='0 0.1 -0.29'>
         <Transform translation='0 0.125 0'>
@@ -346,114 +412,78 @@
     </Transform>
     <Viewpoint DEF='SensorCam'  fieldOfView='0.7854' description='SensorCam ' position='0 -0.8 -0.3'>
     </Viewpoint>
-    <Transform DEF='Sensors' >
-      <Transform DEF='Rays_sensor_0006'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0006' >
+    <Transform DEF='Sensor1'  translation='0 0.02 0.92'>
+      <Shape DEF='Sensor1_hardware' >
+        <Appearance>
+          <Material emissiveColor='0.8 0.2 0'>
+          </Material>
+        </Appearance>
+        <Box size='0.0195 0.0195 0.003'>
+        </Box>
+      </Shape>
+      <Transform DEF='Rays_sensor1'  translation='0 0.075 0.976' rotation='1 0.01 0 130.3'>
+        <Shape DEF='Ray_shape1' >
           <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            <Material transparency='0.8' diffuseColor='1 1 0'>
             </Material>
           </Appearance>
-          <IndexedLineSet DEF='Cone_0006'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
+          <Cone DEF='Cone1'  bottomRadius='0.48015'>
+          </Cone>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0006' >
-          <IndexedLineSet USE='Cone_0006'  containerField='pickingGeometry'>
-          </IndexedLineSet>
+        <PrimitivePickSensor DEF='PickSensor1'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <Cone USE='Cone1'  containerField='pickingGeometry'>
+          </Cone>
           <Group USE='Obstacles'  containerField='pickTarget'>
           </Group>
-        </LinePickSensor>
+        </PrimitivePickSensor>
       </Transform>
-      <Transform DEF='Rays_sensor_0005'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0005' >
+    </Transform>
+    <Transform DEF='Sensor2'  translation='0.788 0.03 -0.468' rotation='0 1 0 90.2'>
+      <Shape DEF='Sensor2_hardware' >
+        <Appearance>
+          <Material emissiveColor='0.8 0.2 0'>
+          </Material>
+        </Appearance>
+        <Box size='0.0195 0.0195 0.003'>
+        </Box>
+      </Shape>
+      <Transform DEF='Rays_sensor2'  translation='-0.08 -0.08 1.01' rotation='0.7 -0.7 0.7 130'>
+        <Shape DEF='Ray_shape2' >
           <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            <Material transparency='0.8' diffuseColor='1 1 0'>
             </Material>
           </Appearance>
-          <IndexedLineSet DEF='Cone_0005'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
+          <Cone DEF='Cone2'  bottomRadius='0.48015'>
+          </Cone>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0005' >
-          <IndexedLineSet USE='Cone_0005'  containerField='pickingGeometry'>
-          </IndexedLineSet>
+        <PrimitivePickSensor DEF='PickSensor2'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <Cone USE='Cone2'  containerField='pickingGeometry'>
+          </Cone>
           <Group USE='Obstacles'  containerField='pickTarget'>
           </Group>
-        </LinePickSensor>
+        </PrimitivePickSensor>
       </Transform>
-      <Transform DEF='Rays_sensor_0004'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0004' >
+    </Transform>
+    <Transform DEF='Sensor3'  translation='-0.794 0.03 -0.452' rotation='0 1 0 92.3'>
+      <Shape DEF='Sensor3_hardware' >
+        <Box size='0.0195 0.0195 0.003'>
+        </Box>
+      </Shape>
+      <Transform DEF='Rays_sensor3'  translation='-0.1 0.17 0.98' rotation='1 -0.5 0.7 130'>
+        <Shape DEF='Ray_shape3' >
           <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            <Material transparency='0.8' diffuseColor='1 1 0'>
             </Material>
           </Appearance>
-          <IndexedLineSet DEF='Cone_0004'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
+          <Cone DEF='Cone3'  bottomRadius='0.48015'>
+          </Cone>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0004' >
-          <IndexedLineSet USE='Cone_0004'  containerField='pickingGeometry'>
-          </IndexedLineSet>
+        <PrimitivePickSensor DEF='PickSensor3'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <Cone USE='Cone3'  containerField='pickingGeometry'>
+          </Cone>
           <Group USE='Obstacles'  containerField='pickTarget'>
           </Group>
-        </LinePickSensor>
-      </Transform>
-      <Transform DEF='Rays_sensor_0003'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0003' >
-          <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
-            </Material>
-          </Appearance>
-          <IndexedLineSet DEF='Cone_0003'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
-        </Shape>
-        <LinePickSensor DEF='PickSensor_0003' >
-          <IndexedLineSet USE='Cone_0003'  containerField='pickingGeometry'>
-          </IndexedLineSet>
-          <Group USE='Obstacles'  containerField='pickTarget'>
-          </Group>
-        </LinePickSensor>
-      </Transform>
-      <Transform DEF='Rays_sensor_0002'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0002' >
-          <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
-            </Material>
-          </Appearance>
-          <IndexedLineSet DEF='Cone_0002'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
-        </Shape>
-        <LinePickSensor DEF='PickSensor_0002' >
-          <IndexedLineSet USE='Cone_0002'  containerField='pickingGeometry'>
-          </IndexedLineSet>
-          <Group USE='Obstacles'  containerField='pickTarget'>
-          </Group>
-        </LinePickSensor>
-      </Transform>
-      <Transform DEF='Rays_sensor_0001'  rotation='0 0 0 0'>
-        <Shape DEF='Ray_shape_0001' >
-          <Appearance>
-            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
-            </Material>
-          </Appearance>
-          <IndexedLineSet DEF='Cone_0001'  coordIndex='0 1 -1 0 2 -1'>
-            <Coordinate point='0 0 0 1 0 1 1 0 2'>
-            </Coordinate>
-          </IndexedLineSet>
-        </Shape>
-        <LinePickSensor DEF='PickSensor_0001' >
-          <IndexedLineSet USE='Cone_0001'  containerField='pickingGeometry'>
-          </IndexedLineSet>
-          <Group USE='Obstacles'  containerField='pickTarget'>
-          </Group>
-        </LinePickSensor>
+        </PrimitivePickSensor>
       </Transform>
     </Transform>
   </Transform>

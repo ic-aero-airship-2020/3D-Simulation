@@ -51,6 +51,10 @@ function sensorLines = ConfigureSensors(airship)
     figure('Name','Sensor FoV visualisation');
     mesh(x_cone,rangeToF,z_cone);
     title('Sensor conic field of vision visualised');
+%     
+%     sensorLines.x = x_cone;
+%     sensorLines.y = rangeToF;
+%     sensorLines.z = z_cone;
     
     Cone_angle_place = balloonParams.sensorZPlaneRot; %angle of inclination from the horizontal pplane from the sensor
 
@@ -130,6 +134,6 @@ function sensorLines = ConfigureSensors(airship)
     sensorLines.balloon.z = z_cone_S;
     
     sensorLines.gondola.x = Gx_cone;
-    sensorLines.balloon.y = GrangeToF;
-    sensorLines.balloon.z = Gz_cone;
+    sensorLines.gondola.y = GrangeToF;
+    sensorLines.gondola.z = Gz_cone;
 end
