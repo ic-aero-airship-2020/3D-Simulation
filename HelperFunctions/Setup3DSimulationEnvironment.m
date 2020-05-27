@@ -1,12 +1,6 @@
 function virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines)
     % ###### Closing all vrworlds ######
-    out = vrwho;
-    for i=1:length(out)
-        while (get(out(i),'opencount')~=0)
-            close(out(i));
-        end
-        delete(out(i));
-    end
+    CloseWorlds();
 
     
     % ###### Loading 3D vrworld for simulation ######

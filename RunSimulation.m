@@ -12,6 +12,7 @@ addpath('./SimulinkModels/');
 
 % ######## Choosing model to use ########
 modelPath = '3DModel/3DModelTemplate.x3d';
+update3DModel = true;
 % #######################################
 
 
@@ -35,8 +36,13 @@ airship.gondolaSetup.numberOfSensors = 3;
 airship.gondolaSetup.sensorZPlaneRot = -13.5;    % deg
 % ###############################################################
 
-sensorLines = ConfigureSensors(airship);
-virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines);
+if update3DModel == true
+    sensorLines = ConfigureSensors(airship);
+    virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines);
+%     save(virtualWorld,modelPath);
+%     CloseWorlds();
+%     clear virtualWorld;
+end
 
 simOut = sim('SimulinkModels/Closed_Loop_Model.slx');
 yaw = simOut.logs(:,1);
