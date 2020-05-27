@@ -1,4 +1,4 @@
-function [virtualWorld,virtualWorldFigure] = Setup3DSimulationEnvironment(modelPath,sensorLines)
+function virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines)
     % ###### Closing all vrworlds ######
     out = vrwho;
     for i=1:length(out)
@@ -38,26 +38,44 @@ function [virtualWorld,virtualWorldFigure] = Setup3DSimulationEnvironment(modelP
     sensorConeCoord1 = virtualWorld.Cone_0001;
     sensorConeCoord1.coordIndex = coordIndex;
     sensorConeCoord1.coord.point = coordPoints1;
+    sensorConeVisualCoord1 = virtualWorld.Cone_Visual_0001;
+    sensorConeVisualCoord1.coordIndex = coordIndex;
+    sensorConeVisualCoord1.coord.point = coordPoints1;
     
     sensorConeCoord2 = virtualWorld.Cone_0002;
     sensorConeCoord2.coordIndex = coordIndex;
     sensorConeCoord2.coord.point = coordPoints2;
+    sensorConeVisualCoord2 = virtualWorld.Cone_Visual_0002;
+    sensorConeVisualCoord2.coordIndex = coordIndex;
+    sensorConeVisualCoord2.coord.point = coordPoints2;
     
     sensorConeCoord3 = virtualWorld.Cone_0003;
     sensorConeCoord3.coordIndex = coordIndex;
     sensorConeCoord3.coord.point = coordPoints3;
+    sensorConeVisualCoord3 = virtualWorld.Cone_Visual_0003;
+    sensorConeVisualCoord3.coordIndex = coordIndex;
+    sensorConeVisualCoord3.coord.point = coordPoints3;
     
     sensorConeCoord4 = virtualWorld.Cone_0004;
     sensorConeCoord4.coordIndex = coordIndex;
     sensorConeCoord4.coord.point = coordPoints4;
+    sensorConeVisualCoord4 = virtualWorld.Cone_Visual_0004;
+    sensorConeVisualCoord4.coordIndex = coordIndex;
+    sensorConeVisualCoord4.coord.point = coordPoints4;
     
     sensorConeCoord5 = virtualWorld.Cone_0005;
     sensorConeCoord5.coordIndex = coordIndex;
     sensorConeCoord5.coord.point = coordPoints5;
+    sensorConeVisualCoord5 = virtualWorld.Cone_Visual_0005;
+    sensorConeVisualCoord5.coordIndex = coordIndex;
+    sensorConeVisualCoord5.coord.point = coordPoints5;
     
     sensorConeCoord6 = virtualWorld.Cone_0006;
     sensorConeCoord6.coordIndex = coordIndex;
     sensorConeCoord6.coord.point = coordPoints6;
+    sensorConeVisualCoord6 = virtualWorld.Cone_Visual_0006;
+    sensorConeVisualCoord6.coordIndex = coordIndex;
+    sensorConeVisualCoord6.coord.point = coordPoints6;
     
     % ###### Showing world ######
 %     virtualWorldFigure = vrfigure(virtualWorld);

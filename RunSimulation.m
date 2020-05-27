@@ -36,12 +36,8 @@ airship.gondolaSetup.sensorZPlaneRot = -13.5;    % deg
 % ###############################################################
 
 sensorLines = ConfigureSensors(airship);
-[virtualWorld,virtualWorldFigure] = Setup3DSimulationEnvironment(modelPath,sensorLines);
+virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines);
 
-% [manualFig,referenceMap,manualPath,frameSize,bwImage] = SetupSimulationEnvironment(complexity);
-% [diffDrive,controller,frontSensor,leftSensor,rightSensor] = SetupAirship(thrustVectorDist,maxThrust,minThrust,cruiseSpeed,maxAngularVelocity,sensorMaxRange,sensorFieldOfVision);
-% [virtualWorld,virtualWorldFigure] = Setup3DSimulationEnvironment(referenceMap,bwImage,[manualPath(1,2) manualPath(1,1)]);
-% 
 simOut = sim('SimulinkModels/Closed_Loop_Model.slx');
 yaw = simOut.logs(:,1);
 x   = simOut.logs(:,2);
