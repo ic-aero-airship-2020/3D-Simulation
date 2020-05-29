@@ -44,7 +44,7 @@
     </Shape>
   </Transform>
 </Group>
-<Transform DEF='Airship'  translation='0 1 0' rotation='0 1 0 0'>
+<Transform DEF='Airship'  translation='0 2.5 0' rotation='0 1 0 0'>
   <Transform DEF='Balloon'  rotation='0 1 0 -1.5708'>
     <TimeSensor DEF='Balloon-TIMER'  cycleInterval='3.333' loop='true'>
     </TimeSensor>

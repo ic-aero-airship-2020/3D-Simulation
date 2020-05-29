@@ -386,7 +386,7 @@
             </Coordinate>
           </IndexedLineSet>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0005'  intersectionType='BOUNDS' sortOrder='CLOSEST'>
+        <LinePickSensor DEF='PickSensor_0005'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
           <IndexedLineSet USE='Cone_0005'  containerField='pickingGeometry'>
           </IndexedLineSet>
           <Group USE='Obstacles'  containerField='pickTarget'>
@@ -414,7 +414,7 @@
             </Coordinate>
           </IndexedLineSet>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0004'  intersectionType='BOUNDS' sortOrder='CLOSEST'>
+        <LinePickSensor DEF='PickSensor_0004'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
           <IndexedLineSet USE='Cone_0004'  containerField='pickingGeometry'>
           </IndexedLineSet>
           <Group USE='Obstacles'  containerField='pickTarget'>
@@ -442,7 +442,7 @@
             </Coordinate>
           </IndexedLineSet>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0003'  intersectionType='BOUNDS' sortOrder='CLOSEST'>
+        <LinePickSensor DEF='PickSensor_0003'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
           <IndexedLineSet USE='Cone_0003'  containerField='pickingGeometry'>
           </IndexedLineSet>
           <Group USE='Obstacles'  containerField='pickTarget'>
@@ -470,7 +470,7 @@
             </Coordinate>
           </IndexedLineSet>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0002'  intersectionType='BOUNDS' sortOrder='CLOSEST'>
+        <LinePickSensor DEF='PickSensor_0002'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
           <IndexedLineSet USE='Cone_0002'  containerField='pickingGeometry'>
           </IndexedLineSet>
           <Group USE='Obstacles'  containerField='pickTarget'>
@@ -498,7 +498,7 @@
             </Coordinate>
           </IndexedLineSet>
         </Shape>
-        <LinePickSensor DEF='PickSensor_0001'  intersectionType='BOUNDS' sortOrder='CLOSEST'>
+        <LinePickSensor DEF='PickSensor_0001'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
           <IndexedLineSet USE='Cone_0001'  containerField='pickingGeometry'>
           </IndexedLineSet>
           <Group USE='Obstacles'  containerField='pickTarget'>
