@@ -187,14 +187,14 @@
     </IndexedFaceSet>
   </Shape>
 </Transform>
-<Group DEF='Walls_Obstacles'  containerField='pickTarget'>
+<Group DEF='Walls_Obstacles' >
   <Transform translation='1 1 1'>
     <Shape>
       <Cylinder radius='0.2'>
       </Cylinder>
     </Shape>
   </Transform>
-  <Transform DEF='simplema_Transform'  translation='-2.5 0 -4'>
+  <Transform DEF='simplema_Transform'  translation='-2.5 0 -2.5'>
     <Shape DEF='simplema_Shape' >
       <Appearance>
         <Material DEF='simplema_Material' >
