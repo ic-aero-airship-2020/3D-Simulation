@@ -10,7 +10,7 @@ function virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines)
     
     % ###### Airship node ######
     airshipNode = virtualWorld.Airship;
-    airshipNode.translation = [0, 1, 0];
+    airshipNode.translation = [0, 2.5, 0];
     
     % ###### Sensors node ######
     balloonSensors = sensorLines.balloon;
@@ -70,6 +70,67 @@ function virtualWorld = Setup3DSimulationEnvironment(modelPath,sensorLines)
     sensorConeVisualCoord6 = virtualWorld.Cone_Visual_0006;
     sensorConeVisualCoord6.coordIndex = coordIndex;
     sensorConeVisualCoord6.coord.point = coordPoints6;
+    
+    % ###### Line Sensors node ######
+    balloonLineSensors = sensorLines.balloon_line;
+    gondolaLineSensors = sensorLines.gondola_line;
+    
+    
+    coordLinePoints1 = [balloonLineSensors.x(1,1,1),balloonLineSensors.z(1,1,1),balloonLineSensors.y(1,1,1);balloonLineSensors.x(2,:,1)',balloonLineSensors.z(2,:,1)',balloonLineSensors.y(2,:,1)'];
+    coordLinePoints2 = [balloonLineSensors.x(1,1,2),balloonLineSensors.z(1,1,2),balloonLineSensors.y(1,1,2);balloonLineSensors.x(2,:,2)',balloonLineSensors.z(2,:,2)',balloonLineSensors.y(2,:,2)'];
+    coordLinePoints3 = [balloonLineSensors.x(1,1,3),balloonLineSensors.z(1,1,3),balloonLineSensors.y(1,1,3);balloonLineSensors.x(2,:,3)',balloonLineSensors.z(2,:,3)',balloonLineSensors.y(2,:,3)'];
+    
+    coordLinePoints4 = [gondolaLineSensors.x(1,1,1),gondolaLineSensors.z(1,1,1),gondolaLineSensors.y(1,1,1);gondolaLineSensors.x(2,:,1)',gondolaLineSensors.z(2,:,1)',gondolaLineSensors.y(2,:,1)'];
+    coordLinePoints5 = [gondolaLineSensors.x(1,1,2),gondolaLineSensors.z(1,1,2),gondolaLineSensors.y(1,1,2);gondolaLineSensors.x(2,:,2)',gondolaLineSensors.z(2,:,2)',gondolaLineSensors.y(2,:,2)'];
+    coordLinePoints6 = [gondolaLineSensors.x(1,1,3),gondolaLineSensors.z(1,1,3),gondolaLineSensors.y(1,1,3);gondolaLineSensors.x(2,:,3)',gondolaLineSensors.z(2,:,3)',gondolaLineSensors.y(2,:,3)'];
+    
+    coordLineIndex = zeros(3,(size(coordLinePoints1,1)-1));
+    coordLineIndex(2,:) = 1:(size(coordLinePoints1,1)-1);
+    coordLineIndex(3,:) = -1;
+    coordLineIndex = coordLineIndex(:);
+    
+    sensorLineCoord1 = virtualWorld.Cone_line_0001;
+    sensorLineCoord1.coordIndex = coordLineIndex;
+    sensorLineCoord1.coord.point = coordLinePoints1;
+    sensorLineVisualCoord1 = virtualWorld.Cone_Visual_line_0001;
+    sensorLineVisualCoord1.coordIndex = coordLineIndex;
+    sensorLineVisualCoord1.coord.point = coordLinePoints1;
+    
+    sensorLineCoord2 = virtualWorld.Cone_line_0002;
+    sensorLineCoord2.coordIndex = coordLineIndex;
+    sensorLineCoord2.coord.point = coordLinePoints2;
+    sensorLineVisualCoord2 = virtualWorld.Cone_Visual_line_0002;
+    sensorLineVisualCoord2.coordIndex = coordLineIndex;
+    sensorLineVisualCoord2.coord.point = coordLinePoints2;
+    
+    sensorLineCoord3 = virtualWorld.Cone_line_0003;
+    sensorLineCoord3.coordIndex = coordLineIndex;
+    sensorLineCoord3.coord.point = coordLinePoints3;
+    sensorLineVisualCoord3 = virtualWorld.Cone_Visual_line_0003;
+    sensorLineVisualCoord3.coordIndex = coordLineIndex;
+    sensorLineVisualCoord3.coord.point = coordLinePoints3;
+    
+    sensorLineCoord4 = virtualWorld.Cone_line_0004;
+    sensorLineCoord4.coordIndex = coordLineIndex;
+    sensorLineCoord4.coord.point = coordLinePoints4;
+    sensorLineVisualCoord4 = virtualWorld.Cone_Visual_line_0004;
+    sensorLineVisualCoord4.coordIndex = coordLineIndex;
+    sensorLineVisualCoord4.coord.point = coordLinePoints4;
+    
+    sensorLineCoord5 = virtualWorld.Cone_line_0005;
+    sensorLineCoord5.coordIndex = coordLineIndex;
+    sensorLineCoord5.coord.point = coordLinePoints5;
+    sensorLineVisualCoord5 = virtualWorld.Cone_Visual_line_0005;
+    sensorLineVisualCoord5.coordIndex = coordLineIndex;
+    sensorLineVisualCoord5.coord.point = coordLinePoints5;
+    
+    sensorLineCoord6 = virtualWorld.Cone_line_0006;
+    sensorLineCoord6.coordIndex = coordLineIndex;
+    sensorLineCoord6.coord.point = coordLinePoints6;
+    sensorLineVisualCoord6 = virtualWorld.Cone_Visual_line_0006;
+    sensorLineVisualCoord6.coordIndex = coordLineIndex;
+    sensorLineVisualCoord6.coord.point = coordLinePoints6;
+    
     
     % ###### Showing world ######
 %     virtualWorldFigure = vrfigure(virtualWorld);

@@ -171,8 +171,8 @@
   </Transform>
   <Transform DEF='StaticObstacles' >
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Geometry' value='2 5 2'/>
-    <fieldValue name='Wall_Pos' value='2.5 0 0'/>
+    <fieldValue name='Wall_Geometry' value='0.1 5 2'/>
+    <fieldValue name='Wall_Pos' value='1.5 0 0'/>
     <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
   </Transform>
@@ -644,6 +644,144 @@
           </Appearance>
           <IndexedLineSet DEF='Cone_Visual_0001'  coordIndex='0 1 -1 0 2 -1 0 3 -1 0 4 -1 0 5 -1 0 6 -1 0 7 -1 0 8 -1 0 9 -1 0 10 -1 0 11 -1 0 12 -1 0 13 -1 0 14 -1 0 15 -1 0 16 -1 0 17 -1 0 18 -1 0 19 -1 0 20 -1 0 21 -1 0 22 -1 0 23 -1 0 24 -1 0 25 -1 0 26 -1 0 27 -1 0 28 -1 0 29 -1 0 30 -1 0 31 -1 0 32 -1 0 33 -1 0 34 -1 0 35 -1 0 36 -1 0 37 -1 0 38 -1 0 39 -1 0 40 -1 0 41 -1 0 42 -1 0 43 -1 0 44 -1 0 45 -1 0 46 -1 0 47 -1 0 48 -1 0 49 -1 0 50 -1 0 51 -1 0 52 -1 0 53 -1 0 54 -1 0 55 -1 0 56 -1 0 57 -1 0 58 -1 0 59 -1 0 60 -1'>
             <Coordinate DEF='Visual_Points_0001'  point='-0.649519 0 -0.375 -2.57379 -0.466891 -0.931541 -2.58275 -0.417263 -0.939854 -2.58889 -0.368198 -0.952785 -2.59213 -0.320251 -0.970186 -2.59245 -0.273966 -0.991861 -2.58983 -0.229866 -1.01756 -2.58432 -0.188452 -1.047 -2.57596 -0.150193 -1.07985 -2.56486 -0.115522 -1.11572 -2.55114 -0.0848328 -1.15422 -2.53496 -0.058472 -1.19491 -2.5165 -0.0367387 -1.23732 -2.49596 -0.0198793 -1.28098 -2.47359 -0.00808462 -1.3254 -2.44963 -0.00148844 -1.37006 -2.42436 -0.000165461 -1.41446 -2.39806 -0.00413066 -1.45811 -2.37104 -0.0133391 -1.5005 -2.34359 -0.0276865 -1.54116 -2.31602 -0.0470102 -1.57962 -2.28866 -0.0710914 -1.61545 -2.26181 -0.0996571 -1.64824 -2.23578 -0.132384 -1.67762 -2.21085 -0.1689 -1.70326 -2.18731 -0.208794 -1.72487 -2.16544 -0.251611 -1.7422 -2.14547 -0.296868 -1.75506 -2.12763 -0.344051 -1.76329 -2.11213 -0.392625 -1.76682 -2.09914 -0.442042 -1.76559 -2.08881 -0.49174 -1.75963 -2.08125 -0.541156 -1.74899 -2.07655 -0.589731 -1.7338 -2.07477 -0.636914 -1.71424 -2.07592 -0.682171 -1.69051 -2.07999 -0.724988 -1.6629 -2.08694 -0.764881 -1.63172 -2.09668 -0.801398 -1.59731 -2.10911 -0.834124 -1.56007 -2.12408 -0.86269 -1.52042 -2.14143 -0.886771 -1.47881 -2.16095 -0.906095 -1.43571 -2.18244 -0.920442 -1.39161 -2.20563 -0.929651 -1.34701 -2.23028 -0.933616 -1.30241 -2.2561 -0.932293 -1.25833 -2.2828 -0.925697 -1.21525 -2.31008 -0.913902 -1.17366 -2.33763 -0.897043 -1.13405 -2.36513 -0.87531 -1.09685 -2.39227 -0.848949 -1.06249 -2.41875 -0.818259 -1.03136 -2.44427 -0.783588 -1.00381 -2.46854 -0.745329 -0.980156 -2.49127 -0.703915 -0.960659 -2.51223 -0.659816 -0.945543 -2.53115 -0.61353 -0.934981 -2.54785 -0.565583 -0.929091 -2.56211 -0.516518 -0.92794 -2.57379 -0.466891 -0.931541'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0001'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0001' >
+          <Appearance>
+            <Material transparency='1' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0001'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0001'  point='-0.649519 0 -0.375 -2.33371 -0.466891 -1.34737'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0001'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0001'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0002'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0002' >
+          <Appearance>
+            <Material transparency='1' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0002'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0002'  point='0.649519 0 -0.375 2.33371 -0.466891 -1.34737'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0002'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0002'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0003'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0003' >
+          <Appearance>
+            <Material transparency='1' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0003'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0003'  point='0 0 0.75 0 -0.466891 2.69474'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0003'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0003'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0004'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0004' >
+          <Appearance>
+            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0004'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0004'  point='-0.0952628 -0.7845 0.055 -1.77946 -1.25139 1.02737'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0004'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0004'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+        <Shape DEF='Ray_shape_visual_line_0004' >
+          <Appearance>
+            <Material transparency='0.25' emissiveColor='1 0 0' diffuseColor='1 0 0'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_Visual_line_0004'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Visual_Points_line_0004'  point='-0.0952628 -0.7845 0.055 -1.77946 -1.25139 1.02737'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0005'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0005' >
+          <Appearance>
+            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0005'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0005'  point='0 -0.7845 -0.11 0 -1.25139 -2.05474'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0005'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0005'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+        <Shape DEF='Ray_shape_visual_line_0005' >
+          <Appearance>
+            <Material transparency='0.25' emissiveColor='1 0 0' diffuseColor='1 0 0'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_Visual_line_0005'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Visual_Points_line_0005'  point='0 -0.7845 -0.11 0 -1.25139 -2.05474'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+      </Transform>
+      <Transform DEF='Rays_sensor_line_0006'  rotation='0 0 0 0'>
+        <Shape DEF='Ray_shape_line_0006' >
+          <Appearance>
+            <Material transparency='0.5' emissiveColor='0 1 1' diffuseColor='0 1 1'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_line_0006'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Points_line_0006'  point='0.0952628 -0.7845 0.055 1.77946 -1.25139 1.02737'>
+            </Coordinate>
+          </IndexedLineSet>
+        </Shape>
+        <LinePickSensor DEF='PickSensor_line_0006'  intersectionType='GEOMETRY' sortOrder='CLOSEST'>
+          <IndexedLineSet USE='Cone_line_0006'  containerField='pickingGeometry'>
+          </IndexedLineSet>
+          <Group USE='Obstacles'  containerField='pickTarget'>
+          </Group>
+        </LinePickSensor>
+        <Shape DEF='Ray_shape_visual_line_0006' >
+          <Appearance>
+            <Material transparency='0.25' emissiveColor='1 0 0' diffuseColor='1 0 0'>
+            </Material>
+          </Appearance>
+          <IndexedLineSet DEF='Cone_Visual_line_0006'  coordIndex='0 1 -1'>
+            <Coordinate DEF='Visual_Points_line_0006'  point='0.0952628 -0.7845 0.055 1.77946 -1.25139 1.02737'>
             </Coordinate>
           </IndexedLineSet>
         </Shape>
