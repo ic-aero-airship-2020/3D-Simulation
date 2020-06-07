@@ -59,7 +59,7 @@
     </IndexedFaceSet>
   </Shape>
 </Transform>
-<Group DEF='Obstacles'  containerField='pickTarget'>
+<Group DEF='Obstacles' >
   <Transform DEF='ExternalWalls' >
     <ProtoInstance name='Wall'>
     <fieldValue name='Wall_Rot' value='0 1 0 0'/>
@@ -167,6 +167,13 @@
     <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     <fieldValue name='Wall_Pos' value='40 0 30'/>
     <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    </ProtoInstance>
+  </Transform>
+  <Transform DEF='StaticObstacles' >
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    <fieldValue name='Wall_Pos' value='1.5 0 0'/>
+    <fieldValue name='Wall_Geometry' value='0.1 5 2'/>
     </ProtoInstance>
   </Transform>
 </Group>

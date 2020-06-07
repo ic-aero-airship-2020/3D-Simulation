@@ -6,9 +6,9 @@
 <Scene>
 <ProtoDeclare name='Wall'>
 <ProtoInterface>
-<field name='Wall_Rot' type='SFRotation' accessType='inputOutput' value='0 1 0 0'/>
-<field name='Wall_Pos' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
 <field name='Wall_Geometry' type='SFVec3f' accessType='initializeOnly' value='40 10 0.5'/>
+<field name='Wall_Pos' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+<field name='Wall_Rot' type='SFRotation' accessType='inputOutput' value='0 1 0 0'/>
 </ProtoInterface>
 <ProtoBody>
   <Transform>
@@ -59,109 +59,121 @@
     </IndexedFaceSet>
   </Shape>
 </Transform>
-<Group DEF='Obstacles'  containerField='pickTarget'>
+<Group DEF='Obstacles' >
   <Transform DEF='ExternalWalls' >
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
     <fieldValue name='Wall_Pos' value='0 0 50'/>
-    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
-    </ProtoInstance>
-    <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
-    <fieldValue name='Wall_Pos' value='50 0 0'/>
-    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
-    </ProtoInstance>
-    <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
-    <fieldValue name='Wall_Pos' value='-50 0 0'/>
-    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
-    </ProtoInstance>
-    <ProtoInstance name='Wall'>
     <fieldValue name='Wall_Rot' value='0 1 0 0'/>
-    <fieldValue name='Wall_Pos' value='0 0 -50'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
     <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='50 0 0'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='-50 0 0'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='100 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='0 0 -50'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
   </Transform>
   <Transform DEF='InternalWalls' >
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
     <fieldValue name='Wall_Pos' value='-30 0 -30'/>
-    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
     <fieldValue name='Wall_Pos' value='-30 0 0'/>
-    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
     <fieldValue name='Wall_Pos' value='-10 0 -20'/>
-    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
     <fieldValue name='Wall_Pos' value='10 0 -40'/>
-    <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
-    <fieldValue name='Wall_Pos' value='5 0 -20'/>
     <fieldValue name='Wall_Geometry' value='30 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='5 0 -20'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
-    <fieldValue name='Wall_Pos' value='20 0 -25'/>
     <fieldValue name='Wall_Geometry' value='10 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='20 0 -25'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
-    <fieldValue name='Wall_Pos' value='30 0 -10'/>
     <fieldValue name='Wall_Geometry' value='40 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='30 0 -10'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
-    <fieldValue name='Wall_Pos' value='0 0 10'/>
     <fieldValue name='Wall_Geometry' value='80 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='0 0 10'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
     <fieldValue name='Wall_Pos' value='-40 0 20'/>
-    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
-    <fieldValue name='Wall_Pos' value='20 0 20'/>
     <fieldValue name='Wall_Geometry' value='60 10 0.5'/>
-    </ProtoInstance>
-    <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
-    <fieldValue name='Wall_Pos' value='-20 0 37.5'/>
-    <fieldValue name='Wall_Geometry' value='25 10 0.5'/>
-    </ProtoInstance>
-    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Pos' value='20 0 20'/>
     <fieldValue name='Wall_Rot' value='0 1 0 0'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='25 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='-20 0 37.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
     <fieldValue name='Wall_Pos' value='-30 0 35'/>
-    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
     <fieldValue name='Wall_Pos' value='0 0 30'/>
-    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
     <fieldValue name='Wall_Pos' value='20 0 30'/>
-    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
     <fieldValue name='Wall_Pos' value='10 0 40'/>
-    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
     </ProtoInstance>
     <ProtoInstance name='Wall'>
-    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
-    <fieldValue name='Wall_Pos' value='30 0 40'/>
     <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='30 0 40'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    </ProtoInstance>
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='20 10 0.5'/>
+    <fieldValue name='Wall_Pos' value='40 0 30'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 1.57'/>
+    </ProtoInstance>
+  </Transform>
+  <Transform DEF='StaticObstacles' >
+    <ProtoInstance name='Wall'>
+    <fieldValue name='Wall_Geometry' value='2 5 2'/>
+    <fieldValue name='Wall_Pos' value='2.5 0 0'/>
+    <fieldValue name='Wall_Rot' value='0 1 0 0'/>
     </ProtoInstance>
   </Transform>
 </Group>

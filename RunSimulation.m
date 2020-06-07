@@ -12,7 +12,7 @@ addpath('./SimulinkModels/');
 
 % ######## Choosing model to use ########
 modelPath = '3DModel/3DModelTemplate.x3d';
-update3DModel = false;
+save3DModel = false;
 % #######################################
 
 
@@ -45,7 +45,7 @@ if save3DModel == true
     CloseWorlds();
     clear virtualWorld;  
 end
-return
+
 simOut = sim('SimulinkModels/Closed_Loop_Model.slx');
 yaw = simOut.logs(:,1);
 x   = simOut.logs(:,2);
