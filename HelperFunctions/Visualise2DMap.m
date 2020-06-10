@@ -6,18 +6,22 @@ classdef Visualise2DMap < matlab.System
 
     % Public, tunable properties
     properties(Nontunable)
-        robotRadius = 1.5;    % Robot radius [m]
-        mapName = '';       % Map
+        robotRadius = 1.5;          % Airship radius [m]
+        mapName = '';               % Map Name
     end
     
     properties(Nontunable, Logical)
-        showLocalLidar = false;      % Show local lidar
+        showLocalLidar = false;     % Show local lidar
+        showFlownPath = false;      % Show flown path
     end
-    
+    properties
+        minTurningRadius = 0.5;     % Minimum turning radius [m]
+        validationDistance = 0.05;  % Validation distance [m]
+    end
     properties(Nontunable)
-        mapXDim = 100;
-        mapYDim = 100;
-        mapResolution = 10;
+        mapXDim = 100;              % Map dimesions x direction
+        mapYDim = 100;              % Map dimesions y direction
+        mapResolution = 10;         % Map resolution
     end
     
     % Pre-computed constants
@@ -27,11 +31,17 @@ classdef Visualise2DMap < matlab.System
         ax;                 % Axes for plotting
         RobotHandle;        % Handle to robot body marker or circle
         OrientationHandle;  % Handle to robot orientation line
+        flownPathHandle;
+        flownPositions;
+        plannedPathHandle;
+        endPointHandle;
         localsesorfig;
         localsensorax;
         sensorDataHandle;
         xoffset;
         yoffset;
+        stateValidator;
+        ss;
     end
 
     methods(Access = protected)
@@ -62,14 +72,17 @@ classdef Visualise2DMap < matlab.System
             
             
             % Initialize robot plot
-            obj.OrientationHandle = plot(obj.ax,0,0,'r','LineWidth',1.5);
+            initx = 0+obj.xoffset;
+            inity = 0+obj.yoffset;
+            
+            obj.OrientationHandle = plot(obj.ax,initx,inity,'r','LineWidth',1.5);
             if obj.robotRadius > 0
                 % Finite size robot
-                [x,y] = internal.circlePoints(0,0,obj.robotRadius,17);
-                obj.RobotHandle = plot(obj.ax,x+obj.xoffset,y+obj.yoffset,'b','LineWidth',1.5);
+                [x,y] = circlePoints(initx,inity,obj.robotRadius,17);
+                obj.RobotHandle = plot(obj.ax,x,y,'b','LineWidth',1.5);
             else
                 % Point robot
-                obj.RobotHandle = plot(obj.ax,0+obj.xoffset,0+obj.yoffset,'bo', ...
+                obj.RobotHandle = plot(obj.ax,initx,inity,'bo', ...
                     'LineWidth',1.5,'MarkerFaceColor',[1 1 1]);
             end
             
@@ -103,14 +116,33 @@ classdef Visualise2DMap < matlab.System
                 title(obj.localsensorax,'Sensor Visualization (Front this direction, upwards)');
                 hold(obj.localsensorax,'off'); 
             end
+                        
+            % Setting up path planner plotting
+            hold(obj.ax,'on');
+            obj.flownPathHandle = plot(obj.ax,initx,inity,'g-');
+            obj.endPointHandle = plot(obj.ax,initx,inity,'mx','LineWidth',1.5);
+            obj.plannedPathHandle = plot(obj.ax,initx,inity,'r-');
+            obj.flownPositions = [initx,inity];
+
+            % Defining state space of the vehicle
+            bounds = [[0 obj.mapXDim]; [0 obj.mapYDim]; [-pi pi]];
+            obj.ss = stateSpaceDubins(bounds);
+            obj.ss.MinTurningRadius = obj.minTurningRadius;
+
+            % map is inflated to account for the width of the airship
+            obj.stateValidator = validatorOccupancyMap(obj.ss); 
+            % Defining validation distance
+            obj.stateValidator.ValidationDistance = obj.validationDistance; % m 
+
         end
 
-        function stepImpl(obj,posetrans,poserot,sensor1,sensor2,sensor3,sensor4,sensor5,sensor6,isActive1,isActive2,isActive3,isActive4,isActive5,isActive6)
+        function nextPose = stepImpl(obj,posetrans,poserot,sensor1,sensor2,sensor3,sensor4,sensor5,sensor6,isActive1,isActive2,isActive3,isActive4,isActive5,isActive6,goalPose)
             % Implement algorithm. Calculate y as a function of input u and
             % discrete states.
             x = posetrans(1)+obj.xoffset;
             y = -1*posetrans(3)+obj.yoffset;
             theta = poserot(2);
+            position = [x;y;theta];
             
             % Check for closed figure
             if ~isvalid(obj.fig)
@@ -122,7 +154,7 @@ classdef Visualise2DMap < matlab.System
             lineLength = diff(xAxesLim)/40;
             if obj.robotRadius > 0
                 % Finite radius case
-                [xc,yc] = internal.circlePoints(x,y,obj.robotRadius,17);
+                [xc,yc] = circlePoints(x,y,obj.robotRadius,17);
                 set(obj.RobotHandle,'xdata',xc,'ydata',yc);
                 len = max(lineLength,2*obj.robotRadius); % Plot orientation based on radius unless it's too small
                 xp = [x, x+(len*cos(theta))];
@@ -134,6 +166,11 @@ classdef Visualise2DMap < matlab.System
                 yp = [y, y+(lineLength*sin(theta))];
                 set(obj.RobotHandle,'xdata',x,'ydata',y);
                 set(obj.OrientationHandle,'xdata',xp,'ydata',yp);
+            end
+            
+            if obj.showFlownPath
+                obj.flownPositions = [obj.flownPositions;[x,y]];
+                set(obj.flownPathHandle,'xdata',obj.flownPositions(:,1),'ydata',obj.flownPositions(:,2));
             end
             
             
@@ -183,13 +220,87 @@ classdef Visualise2DMap < matlab.System
                         isActive1,isActive5,isActive2];
                 set(obj.sensorDataHandle,'cdata',uint8(data));
             end
+            
+            if sum(isnan(goalPose)) == 0
+                if obj.robotRadius > 0
+                    mapInflated = copy(obj.map);
+                    inflate(mapInflated, obj.robotRadius);
+                    obj.stateValidator.Map = mapInflated;
+                else
+                    obj.stateValidator.Map = obj.map;
+                end
+                % Defining validation distance
+                obj.stateValidator.ValidationDistance =  obj.validationDistance; % m 
+                planner = plannerRRTStar(obj.ss, obj.stateValidator);
+                planner.MaxConnectionDistance = 2.0;
+                planner.MaxIterations = 30000;
+
+                planner.GoalReachedFcn = @CheckIfGoalReached;
+                [pthObj, solnInfo] = plan(planner, position', goalPose');
+                
+                if ~solnInfo.IsPathFound
+                    disp('E Stop Implemented');
+                    nextX = 0;
+                    nextY = 0;
+                    nextPsi = 1.57;
+                else
+                    nextX = pthObj.States(2,1);
+                    nextY = pthObj.States(2,2);
+                    nextPsi = pthObj.States(2,3);
+                    set(obj.plannedPathHandle,'xdata',pthObj.States(:,1),'ydata',pthObj.States(:,2));
+                end
+                
+                
+            else
+                nextX = nan;
+                nextY = nan;
+                nextPsi = nan;
+            end
+            nextPose = [nextX,nextY,nextPsi];
+        end
+        
+        % More methods needed for the Simulink block to inherit its output
+        % sizes from the scan angle parameter provided.
+        function sz = getOutputSizeImpl(~)
+            sz = [1,3];
+        end
+        
+        function fx = isOutputFixedSizeImpl(~)
+           fx = false;
+        end
+        
+        function dt = getOutputDataTypeImpl(~)
+            dt = 'double';
         end
 
+        function cp = isOutputComplexImpl(~)
+            cp = false;
+        end
+        
+        
+%         function flag = isInactivePropertyImpl(obj,prop)
+%              flag = false;
+%              switch prop
+%                  case 'endGoal'
+%                      flag = ~obj.planFlightPath;
+%              end
+%         end
+        
         function resetImpl(obj)
             % Initialize / reset discrete-state properties
         end
     end
     
+    
+%     methods (Access = public)
+%         % Attaches all properties associated with a LidarSensor object
+%         function attachFlightPath(obj,flightPath)
+%             obj.planFlightPath = true;
+%             obj.path = flightPath.endGoal;
+%             
+%         end
+%         
+%     end
     
     methods (Static, Access = protected)
         % Do not show "Simulate using" option
