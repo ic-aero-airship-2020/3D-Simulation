@@ -233,7 +233,7 @@ classdef Visualise2DMap < matlab.System
                 obj.stateValidator.ValidationDistance =  obj.validationDistance; % m 
                 planner = plannerRRTStar(obj.ss, obj.stateValidator);
                 planner.MaxConnectionDistance = 2.0;
-                planner.MaxIterations = 30000;
+                planner.MaxIterations = 500;%30000;
 
                 planner.GoalReachedFcn = @CheckIfGoalReached;
                 [pthObj, solnInfo] = plan(planner, position', goalPose');
@@ -242,7 +242,7 @@ classdef Visualise2DMap < matlab.System
                     disp('E Stop Implemented');
                     nextX = 0;
                     nextY = 0;
-                    nextPsi = 1.57;
+                    nextPsi = -6.28;
                 else
                     nextX = pthObj.States(2,1);
                     nextY = pthObj.States(2,2);
@@ -256,17 +256,17 @@ classdef Visualise2DMap < matlab.System
                 nextY = nan;
                 nextPsi = nan;
             end
-            nextPose = [nextX,nextY,nextPsi];
+            nextPose = [nextX,nextY];
         end
         
         % More methods needed for the Simulink block to inherit its output
         % sizes from the scan angle parameter provided.
         function sz = getOutputSizeImpl(~)
-            sz = [1,3];
+            sz = [1,2];
         end
         
         function fx = isOutputFixedSizeImpl(~)
-           fx = false;
+           fx = true;
         end
         
         function dt = getOutputDataTypeImpl(~)
