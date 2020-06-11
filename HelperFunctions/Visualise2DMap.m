@@ -256,13 +256,16 @@ classdef Visualise2DMap < matlab.System
                 nextY = nan;
                 nextPsi = nan;
             end
-            nextPose = [nextX,nextY];
+            
+            translatedNextX = nextX-obj.xoffset;
+            translatedNextY = nextY-obj.yoffset;
+            nextPose = [translatedNextX,translatedNextY,nextPsi];
         end
         
         % More methods needed for the Simulink block to inherit its output
         % sizes from the scan angle parameter provided.
         function sz = getOutputSizeImpl(~)
-            sz = [1,2];
+            sz = [1,3];
         end
         
         function fx = isOutputFixedSizeImpl(~)
